@@ -1,6 +1,6 @@
 /obj/item/organ/stomach/synth
 	name = "synthetic fuel cell"
-	icon = 'modular_nova/master_files/icons/obj/surgery.dmi'
+	icon = 'local/code/modules/synths/icons/surgery.dmi'
 	icon_state = "stomach-ipc"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = BODY_ZONE_CHEST

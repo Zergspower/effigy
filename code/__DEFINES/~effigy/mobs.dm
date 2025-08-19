@@ -67,3 +67,8 @@ GLOBAL_LIST_INIT(monitor_lizard_displays, list(
 
 /// Slowdowns
 #define PULL_OVERSIZED_SLOWDOWN 2
+
+///Defines for icons used for modular bodyparts, created to make it easier to relocate the module or files if necessary.
+#define BODYPART_ICON_IPC 'local/code/modules/synths/icons/bodyparts/ipc_parts.dmi'
+#define BODYPART_ICON_SYNTHMAMMAL 'local/code/modules/synths/icons/bodyparts/synthmammal_parts_greyscale.dmi'
+#define BODYPART_ICON_SYNTHLIZARD 'local/code/modules/synths/icons/bodyparts/synthliz_parts_greyscale.dmi'

@@ -1,6 +1,6 @@
 /obj/item/organ/ears/synth
 	name = "auditory sensors"
-	icon = 'modular_nova/master_files/icons/obj/surgery.dmi'
+	icon = 'local/code/modules/synths/icons/surgery.dmi'
 	icon_state = "ears-ipc"
 	desc = "A pair of microphones intended to be installed inside a machine's chassis, that grant the ability to hear."
 	zone = BODY_ZONE_CHEST

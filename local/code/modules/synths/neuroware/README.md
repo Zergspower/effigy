@@ -63,12 +63,14 @@ Adds neuroware chips, which add reagents to synthetic humanoids which are contex
   - Added global list `name2neuroware`. Same as `name2reagent` but contains only neuroware reagents.
   - Added global list `name2neuroware_safe`. Same as `name2neuroware` but omits aphrodisiac reagents.
 
- ### Included files that are not contained in this module:
+### Included files that are not contained in this module:
 
 - `code/__DEFINES/~nova_defines/neuroware_defines.dm`
 - `modular_nova/modules/GAGS/json_configs/items/neuroware.json`
 - `modular_nova/master_files/code/_globalvars/lists/reagents.dm`
 
 ### Credits:
+
 - Code by [@Floofies](https://github.com/Floofies)
 - Sprites by [@splat1125](https://github.com/splat1125)
+- Code adaption to Effigy by [@Zergspower](https://github.com/Zergspower)

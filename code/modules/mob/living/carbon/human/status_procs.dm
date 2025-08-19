@@ -30,3 +30,9 @@
 	. = ..()
 	if(.)
 		update_body_parts()
+
+// EffigyEdit Start: Additional procs
+/mob/living/carbon/human/become_husk(source)
+	if(!HAS_TRAIT(src, TRAIT_NO_HUSK))
+		. = ..()
+// Effigy Edit End

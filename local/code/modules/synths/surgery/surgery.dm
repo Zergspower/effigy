@@ -1,4 +1,5 @@
 //Blacklists upstream's mechanical surgeries for augmented people in favor of our synth surgeries
+//This is done for RP Purposes and to keep synthetic and organic surgeries fully segregated
 
 /datum/surgery/advanced/bioware/cortex_folding/mechanic/can_start(mob/user, mob/living/carbon/target)
 	return !issynthetic(target) && ..()

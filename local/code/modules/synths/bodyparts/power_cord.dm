@@ -3,7 +3,6 @@
 	desc = "An internal power cord. Useful if you run on elecricity. Not so much otherwise."
 	items_to_create = list(/obj/item/synth_powercord)
 	zone = "l_arm"
-	cannot_confiscate = TRUE
 
 /obj/item/synth_powercord
 	name = "power cord"

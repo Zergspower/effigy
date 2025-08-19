@@ -1,7 +1,7 @@
 /obj/item/organ/liver/synth
 	name = "reagent processing unit"
 	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
-	icon = 'modular_nova/master_files/icons/obj/surgery.dmi'
+	icon = 'local/code/modules/synths/icons/surgery.dmi'
 	icon_state = "liver-ipc"
 	filterToxins = FALSE //We dont filter them, we're immune to them
 	zone = BODY_ZONE_CHEST

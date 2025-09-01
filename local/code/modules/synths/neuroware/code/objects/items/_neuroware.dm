@@ -1,3 +1,6 @@
+#define span_cyan(str) ("<span class='cyan'>" + str + "</span>")
+#define span_pink(str) ("<span class='pink'>" + str + "</span>")
+#define span_yellow(str) ("<span class='yellow'>" + str + "</span>")
 #define CHIP_LABEL_BISHOP "It has a <b>[span_cyan("Bishop Cybernetics, Inc.")]</b> label visible on it."
 #define CHIP_LABEL_DEFOREST "It has <b>[span_cyan("DeForest Medical Corporation")]</b> laser-etched into it."
 #define CHIP_LABEL_DONK "It has a <b>[span_green("Donk Corporation")]</b> label visible on it."
@@ -13,9 +16,7 @@
 ///Like pills, but doesn't directly contain reagents, instead adds them manually.
 /obj/item/disk/neuroware
 	name = "neuroware chip"
-	special_desc = "A neuroware chip uploads neurocomputing programs to the user's brain. The recipient must be a synthetic humanoid. \
-		Neurocomputing software, also known as neuroware, are programs designed to execute their code within the synaptic connections of artificial neural networks."
-	icon = 'modular_nova/modules/neuroware/icons/neuroware.dmi'
+	icon = 'local/code/modules/synths/neuroware/icons/neuroware.dmi'
 	icon_state = "chip_generic"
 	post_init_icon_state = "chip_generic"
 	greyscale_config = /datum/greyscale_config/neuroware
@@ -36,13 +37,9 @@
 	var/reusable = TRUE
 	///How many times the chip can be used.
 	var/uses = 1
-	///Whether or not this chip requires lewd item preference enforcement.
-	var/is_lewd = FALSE
 
 /obj/item/disk/neuroware/Initialize(mapload)
 	. = ..()
-	if(is_lewd && CONFIG_GET(flag/disable_lewd_items))
-		return INITIALIZE_HINT_QDEL
 	if(isnull(manufacturer_tag))
 		return
 	desc += "<br>"
@@ -63,6 +60,9 @@
 			desc += CHIP_LABEL_WARD
 		if(NEUROWARE_ZENGHU)
 			desc += CHIP_LABEL_ZENGHU
+	AddElement(/datum/element/unique_examine, \
+	desc = "A neuroware chip uploads neurocomputing programs to the user's brain. The recipient must be a synthetic humanoid. \
+		Neurocomputing software, also known as neuroware, are programs designed to execute their code within the synaptic connections of artificial neural networks.")
 
 /obj/item/disk/neuroware/examine()
 	. = ..()
@@ -129,15 +129,6 @@
 	if(uses == 0)
 		balloon_alert(user, "it's been used up!")
 		return
-	var/obj/item/organ/brain/owner_brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
-	var/obj/item/organ/cyberimp/brain/nif/is_nif_user = target.get_organ_by_type(/obj/item/organ/cyberimp/brain/nif)
-	if(isnull(owner_brain) || !(owner_brain.organ_flags & ORGAN_ROBOTIC) || !is_nif_user)
-		balloon_alert(user, "synthetic brain or NIF required!")
-		return
-	if(is_lewd && !(target.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
-		balloon_alert(user, "installation failed!")
-		return
-
 	if(target != user)
 		target.visible_message(
 			span_danger("[user] tries to force [src] into [target]'s [NEURO_SLOT_NAME]!"),

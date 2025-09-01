@@ -1,7 +1,6 @@
 /datum/species/synthetic
 	name = "Synthetic Humanoid"
 	id = SPECIES_SYNTH
-	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
@@ -19,13 +18,13 @@
 		TRAIT_ROBOTIC_DNA_ORGANS,
 		TRAIT_SYNTHETIC,
 	)
-	mutant_bodyparts = list()
+	//mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
 	payday_modifier = 1.0 // Matches the rest of the pay penalties the non-human crew have
-	death_sound = 'modular_nova/master_files/sound/effects/hacked.ogg'
+	death_sound = 'local/code/modules/synths/sounds/hacked.ogg'
 	species_language_holder = /datum/language_holder/machine
-	mutant_organs = list(/obj/item/organ/cyberimp/arm/toolkit/power_cord/left_arm)
+	mutant_organs = list(/obj/item/organ/cyberimp/arm/toolkit/power_cord)
 	mutantbrain = /obj/item/organ/brain/synth
 	mutantstomach = /obj/item/organ/stomach/synth
 	mutantears = /obj/item/organ/ears/synth
@@ -55,9 +54,7 @@
 	/// Set to TRUE if the species was emagged before
 	var/emag_effect = FALSE
 
-/datum/species/synthetic/allows_food_preferences()
-	return FALSE
-
+/*
 /datum/species/synthetic/get_default_mutant_bodyparts()
 	return list(
 		"ears" = list("None", FALSE),
@@ -70,6 +67,7 @@
 		MUTANT_SYNTH_CHASSIS = list("Default Chassis", FALSE),
 		MUTANT_SYNTH_HEAD = list("Default Head", FALSE),
 	)
+*/
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
 	. = ..()
@@ -82,8 +80,8 @@
 			do_sparks(3, TRUE, human)
 
 /datum/species/synthetic/spec_revival(mob/living/carbon/human/transformer)
-	switch_to_screen(transformer, "Console")
-	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, saved_screen), 5 SECONDS)
+	//switch_to_screen(transformer, "Console")
+	//addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, saved_screen), 5 SECONDS)
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
@@ -94,6 +92,8 @@
 
 	var/datum/action/sing_tones/sing_action = new
 	sing_action.Grant(transformer)
+
+/* IDK what to do about this part
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
 	var/obj/item/organ/eyes/eyes = transformer.get_organ_slot(ORGAN_SLOT_EYES)
@@ -145,7 +145,7 @@
 			limb.add_color_override(chassis[MUTANT_INDEX_COLOR_LIST][1], LIMB_COLOR_SYNTH)
 		limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
 		limb.name = "\improper[chassis_of_choice.name] [parse_zone(limb.body_zone)]"
-
+*/
 
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/human)
 	. = ..()
@@ -160,24 +160,6 @@
 	if(screen)
 		screen.Remove(human)
 		UnregisterSignal(human, COMSIG_LIVING_DEATH)
-
-/datum/species/synthetic/gain_oversized_organs(mob/living/carbon/human/human_holder, datum/quirk/oversized/oversized_quirk)
-	if(isnull(human_holder.loc))
-		return // preview characters don't need funny organs, prevents a runtime
-
-	var/obj/item/organ/stomach/old_stomach = human_holder.get_organ_slot(ORGAN_SLOT_STOMACH)
-	if(old_stomach.is_oversized) // don't override augments that are already oversized
-		return
-
-	var/obj/item/organ/stomach/synth/oversized/new_synth_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE reactor! RIP AND TEAR YOUR HUGE reactor!
-
-	oversized_quirk.old_organs += list(old_stomach)
-
-	new_synth_stomach.Insert(human_holder, special = TRUE)
-	to_chat(human_holder, span_warning("You feel your massive engine rumble!"))
-	if(old_stomach)
-		old_stomach.moveToNullspace()
-		STOP_PROCESSING(SSobj, old_stomach)
 
 /datum/species/synthetic/proc/on_emag_act(mob/living/carbon/human/source, mob/user)
 	SIGNAL_HANDLER
@@ -195,11 +177,13 @@
  * * transformer - The human that will be affected by the screen change (read: IPC).
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to. Defaults to BSOD.
  */
+/*
 /datum/species/synthetic/proc/bsod_death(mob/living/carbon/human/transformer, screen_name = "BSOD")
 	saved_screen = screen // remember the old screen in case of revival
 	switch_to_screen(transformer, screen_name)
 	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
 
+*/
 /**
  * Simple proc to switch the screen of a monitor-enabled synth, while updating their appearance.
  *
@@ -207,6 +191,7 @@
  * * transformer - The human that will be affected by the screen change (read: IPC).
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
+/*
 /datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/transformer, screen_name)
 	if(!screen)
 		return
@@ -219,6 +204,7 @@
 	transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
 	screen_organ.bodypart_overlay.set_appearance_from_dna(transformer.dna)
 	transformer.update_body()
+*/
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/cyberimp/arm/toolkit/power_cord) // Don't cache things that lead to hard deletions.
@@ -260,6 +246,18 @@
 	return perk_descriptions
 
 /datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
-	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
-	regenerate_organs(beepboop, src, visual_only = TRUE)
-	beepboop.update_body(TRUE)
+	beepboop.dna.ear_type = CYBERNETIC_TYPE
+	beepboop.dna.features["ears"] = "No Ears"
+	beepboop.dna.features["ears_color_1"] = "#333333"
+	beepboop.dna.tail_type = CYBERNETIC_TYPE
+	beepboop.dna.features["tail_other"] = /datum/sprite_accessory/tails/lizard/none::name
+	beepboop.dna.features["frame_list"] = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/synth,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/synth,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/synth,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/synth,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/synth,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/synth,
+	)
+	regenerate_organs(beepboop)
+	beepboop.update_body(is_creating = TRUE)

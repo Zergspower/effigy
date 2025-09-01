@@ -1,3 +1,4 @@
+
 /datum/species/android
 	name = "Synthetic Humanoid"
 	id = SPECIES_ANDROID
@@ -64,7 +65,7 @@
 	are united by only the loosest definitions of history, with S.E.L.F. being the driving force behind their \
 	continual integration with subsections of the larger galactic community; wherein they aren't expressly built for purpose regardless."
 	)
-
+/*
 /datum/species/android/on_species_gain(mob/living/carbon/target, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	if(ishuman(target))
@@ -79,7 +80,7 @@
 		var/datum/hud/hud_used = target.hud_used
 		hud_used.infodisplay -= energy_tracker
 		QDEL_NULL(energy_tracker)
-
+*/
 /datum/species/android/spec_revival(mob/living/carbon/human/target)
 	if(internal_charge < 0.750 MEGA JOULES)
 		internal_charge += 0.750 MEGA JOULES
@@ -101,8 +102,8 @@
 		return
 	if(HAS_TRAIT(target, TRAIT_SYNTH_CHARGING))
 		return
-	if(internal_charge > SYNTH_ENERGY_CONSUMPTION)
-		internal_charge -= SYNTH_ENERGY_CONSUMPTION
+	if(internal_charge > SYNTH_JOULES_PER_NUTRITION)
+		internal_charge -= SYNTH_JOULES_PER_NUTRITION
 		target.remove_movespeed_modifier(/datum/movespeed_modifier/synth_nocharge)
 	// Once out of power, you begin to move terribly slowly
 	else // EffigyEdit TODO: ARGH make this only run once!
@@ -162,3 +163,4 @@
 	return internal_charge > 300 KILO JOULES ? "#e7e9ee" : "#f0197d"
 
 #undef SYNTH_HUD_TEXT
+

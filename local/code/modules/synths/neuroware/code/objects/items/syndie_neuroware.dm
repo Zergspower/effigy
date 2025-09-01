@@ -13,5 +13,10 @@
 	manufacturer_tag = NEUROWARE_SYNDIE
 	// Can be used on the target instantly
 	external_delay = 0
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "This Syndicate neuroware chip contains CrypSys, a package of ransomware viruses targeting synthetic humanoids. Designed to temporarily render the target mute, immobile, and unconscious."
+
+/obj/item/disk/neuroware/sleepy/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+	desc = "This Syndicate neuroware chip contains CrypSys, a package of ransomware viruses targeting synthetic humanoids. Designed to temporarily render the target mute, immobile, and unconscious.", \
+	desc_requirement = EXAMINE_CHECK_ANTAG, \
+	requirements = GLOB.examine_syndicate_antag_list)

@@ -1,7 +1,7 @@
 /obj/item/storage/box/flat/neuroware
 	name = "neuroware chip case"
 	desc = "A cheap cardboard case optimal for carrying up to five neuroware chips."
-	icon = 'modular_nova/modules/neuroware/icons/box.dmi'
+	icon = 'local/code/modules/synths/neuroware/icons/box.dmi'
 	icon_state = "neuroware_case"
 	w_class = WEIGHT_CLASS_SMALL
 	illustration = null
@@ -53,32 +53,3 @@
 	for(var/i in 1 to 5)
 		new /obj/item/disk/neuroware/thc(src)
 
-// Lewd neurowares
-
-/obj/item/storage/box/flat/neuroware/crocin
-	name = "neuroware chips (EroStim)"
-
-/obj/item/storage/box/flat/neuroware/crocin/PopulateContents()
-	for(var/i in 1 to 5)
-		new /obj/item/disk/neuroware/crocin(src)
-
-/obj/item/storage/box/flat/neuroware/hexacrocin
-	name = "neuroware chips (EroStim Deluxe)"
-
-/obj/item/storage/box/flat/neuroware/hexacrocin/PopulateContents()
-	for(var/i in 1 to 5)
-		new /obj/item/disk/neuroware/hexacrocin(src)
-
-/obj/item/storage/box/flat/neuroware/camphor
-	name = "neuroware chips (AphroCalm)"
-
-/obj/item/storage/box/flat/neuroware/camphor/PopulateContents()
-	for(var/i in 1 to 5)
-		new /obj/item/disk/neuroware/camphor(src)
-
-/obj/item/storage/box/flat/neuroware/pentacamphor
-	name = "neuroware chips (Nobido Xtreme)"
-
-/obj/item/storage/box/flat/neuroware/pentacamphor/PopulateContents()
-	for(var/i in 1 to 5)
-		new /obj/item/disk/neuroware/pentacamphor(src)

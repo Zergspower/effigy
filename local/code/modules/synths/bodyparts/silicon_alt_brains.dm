@@ -3,7 +3,7 @@
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
 	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
-	icon = 'modular_nova/master_files/icons/obj/alt_silicon_brains.dmi'
+	icon = 'local/code/modules/synths/icons/bodyparts/alt_silicon_brains.dmi'
 	icon_state = "circuit"
 	base_icon_state = "circuit"
 	inhand_icon_state = "electronic"
@@ -153,12 +153,6 @@
 		var/datum/scream_type/scream_type = new scream_id
 		selected_scream = scream_type
 
-/// Transfers the blooper prefs to the silicon mob
-/mob/living/silicon/proc/transfer_blooper_pref(client/player_client)
-	set_blooper(player_client.prefs.read_preference(/datum/preference/choiced/vocals/blooper))
-	blooper_pitch = player_client.prefs.read_preference(/datum/preference/numeric/blooper_speech_pitch)
-	blooper_speed = player_client.prefs.read_preference(/datum/preference/numeric/blooper_speech_speed)
-	blooper_pitch_range = player_client.prefs.read_preference(/datum/preference/numeric/blooper_pitch_range)
 
 // This is only implemented for cyborgs at the moment. AI has their own weird way of doing things.
 /mob/living/silicon/robot/transfer_brain_pref(client/player_client)
@@ -188,7 +182,6 @@
 	transfer_chat_color_pref(player_client)
 	transfer_brain_pref(player_client)
 	transfer_emote_pref(player_client)
-	transfer_blooper_pref(player_client)
 
 /mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
 	. = ..()

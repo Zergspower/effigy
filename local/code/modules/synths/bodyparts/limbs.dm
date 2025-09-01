@@ -289,7 +289,7 @@
 	is_dimorphic = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
-	digitigrade_type = /obj/item/bodypart/leg/left/synth/digitigrade
+	//digitigrade_type = /obj/item/bodypart/leg/left/synth/digitigrade
 	bodytype = BODYTYPE_ROBOTIC
 	bodyshape = BODYSHAPE_HUMANOID
 	change_exempt_flags = NONE
@@ -344,7 +344,7 @@
 	is_dimorphic = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
-	digitigrade_type = /obj/item/bodypart/leg/right/synth/digitigrade
+	//digitigrade_type = /obj/item/bodypart/leg/right/synth/digitigrade
 	bodytype = BODYTYPE_ROBOTIC
 	bodyshape = BODYSHAPE_HUMANOID
 	change_exempt_flags = NONE
@@ -390,7 +390,7 @@
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	limb_id = BODYPART_ID_DIGITIGRADE
 	bodyshape = parent_type::bodyshape | BODYSHAPE_DIGITIGRADE
-	base_limb_id = BODYPART_ID_DIGITIGRADE
+	//base_limb_id = BODYPART_ID_DIGITIGRADE
 
 /datum/design/synth_l_d_leg
 	name = "Android Digitigrade Left Leg Base"
@@ -411,7 +411,7 @@
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	limb_id = BODYPART_ID_DIGITIGRADE
 	bodyshape = parent_type::bodyshape | BODYSHAPE_DIGITIGRADE
-	base_limb_id = BODYPART_ID_DIGITIGRADE
+	//base_limb_id = BODYPART_ID_DIGITIGRADE
 
 /datum/design/synth_r_d_leg
 	name = "Android Digitigrade Right Leg Base"

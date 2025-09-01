@@ -10,9 +10,9 @@
 	if(!istype(synth_species))
 		return
 
-	var/new_ipc_screen = tgui_input_list(usr, "Choose your character's screen:", "Monitor Display", SSaccessories.sprite_accessories[MUTANT_SYNTH_SCREEN])
+	//var/new_ipc_screen = tgui_input_list(usr, "Choose your character's screen:", "Monitor Display", SSaccessories.sprite_accessories[MUTANT_SYNTH_SCREEN])
 
-	if(!new_ipc_screen)
-		return
+	//if(!new_ipc_screen)
+		//return
 
-	synth_species.switch_to_screen(human, new_ipc_screen)
+	//synth_species.switch_to_screen(human, new_ipc_screen)

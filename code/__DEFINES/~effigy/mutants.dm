@@ -45,6 +45,7 @@ GLOBAL_LIST_INIT(bodypart_allowed_species, list(
 		/datum/species/android,
 		/datum/species/insectoid,
 		/datum/species/moth,
+		/datum/species/synthetic,
 	),
 	CYBER_FRAME = list(
 		/datum/species/android,
@@ -67,6 +68,7 @@ GLOBAL_LIST_INIT(bodypart_allowed_species, list(
 		/datum/species/android,
 		/datum/species/animalid,
 		/datum/species/insectoid,
+		/datum/species/synthetic,
 	),
 	FLUFF = list(
 		/datum/species/moth,
@@ -75,11 +77,13 @@ GLOBAL_LIST_INIT(bodypart_allowed_species, list(
 		/datum/species/android,
 		/datum/species/animalid,
 		/datum/species/lizard,
+		/datum/species/synthetic.
 	),
 	HORNS = list(
 		/datum/species/android,
 		/datum/species/animalid,
 		/datum/species/lizard,
+		/datum/species/synthetic,
 	),
 	DIGI_LEGS = list(
 		/datum/species/android,
@@ -87,24 +91,28 @@ GLOBAL_LIST_INIT(bodypart_allowed_species, list(
 		/datum/species/insectoid,
 		/datum/species/lizard,
 		/datum/species/moth,
+		/datum/species/synthetic,
 	),
 	SNOUT = list(
 		/datum/species/animalid,
 		/datum/species/android,
 		/datum/species/insectoid,
 		/datum/species/lizard,
+		/datum/species/synthetic,
 	),
 	TAIL = list(
 		/datum/species/animalid,
 		/datum/species/android,
 		/datum/species/insectoid,
 		/datum/species/lizard,
+		/datum/species/synthetic,
 	),
 	WINGS = list(
 		/datum/species/android,
 		/datum/species/animalid,
 		/datum/species/insectoid,
 		/datum/species/moth,
+		/datum/species/synthetic,
 	),
 ))
 

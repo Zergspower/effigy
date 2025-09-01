@@ -16,5 +16,5 @@
 /atom/movable/screen/alert/status_effect/neuroware
 	name = "Neuroware Active"
 	desc = "Software is executing in your brain."
-	icon = 'modular_nova/modules/neuroware/icons/screen_alert.dmi'
+	icon = 'local/code/modules/synths/neuroware/icons/screen_alert.dmi'
 	icon_state = "neuroware"
